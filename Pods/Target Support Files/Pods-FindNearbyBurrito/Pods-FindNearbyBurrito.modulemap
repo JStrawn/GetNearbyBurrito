@@ -1,0 +1,6 @@
+framework module Pods_FindNearbyBurrito {
+  umbrella header "Pods-FindNearbyBurrito-umbrella.h"
+
+  export *
+  module * { export * }
+}

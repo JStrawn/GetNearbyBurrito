@@ -10,10 +10,12 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
   
+  // MARK: - Outlets
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var addressLabel: UILabel!
   @IBOutlet weak var infoLabel: UILabel!
   
+  // MARK: - View
   func addShadow() {
     self.contentView.layer.borderWidth = 1.0
     self.contentView.layer.borderColor = UIColor.clear.cgColor

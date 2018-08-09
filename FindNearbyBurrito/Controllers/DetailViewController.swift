@@ -11,14 +11,16 @@ import GoogleMaps
 
 class DetailViewController: UIViewController {
   
+  // MARK: - Injections
   var currentRestaurant: Restaurant!
   
+  // MARK: - Outlets
   @IBOutlet weak var mapView: GMSMapView!
   @IBOutlet weak var infoView: UIView!
   @IBOutlet weak var addressLabel: UILabel!
   @IBOutlet weak var infoLabel: UILabel!
   
-  
+  // MARK: - View Lifecycle
   override func viewDidLoad() {
     
     self.title = currentRestaurant.name

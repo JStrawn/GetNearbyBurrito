@@ -13,13 +13,16 @@ import MapKit
 
 class ViewController: UIViewController {
   
+  // MARK: - Injections
   private let locationManager = CLLocationManager()
   private var hasData: Bool?
   private var networkingSharedInstance = Networking()
   
+  // MARK: - Outlets
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   @IBOutlet weak var collectionView: UICollectionView!
   
+  // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     activityIndicator.isHidden = false
@@ -36,6 +39,7 @@ class ViewController: UIViewController {
   }
 }
 
+// MARK: - CLLocationManager
   extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
       guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else {
@@ -46,7 +50,8 @@ class ViewController: UIViewController {
       networkingSharedInstance.getRestaurantsNearLocation(lattitude: String(locValue.latitude), longitude: String(locValue.longitude), completion:  {_ in })
     }
   }
-  
+
+// MARK: - UICollectionView
   extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

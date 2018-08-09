@@ -8,21 +8,27 @@
 
 import Foundation
 
+// MARK: Webservice Response
 enum WebServiceError: Error {
   case DataEmptyError
   case ResponseError
 }
 
+// MARK: Session Protocol (for Mock Session XCTest)
 protocol SessionProtocol {
   func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void ) -> URLSessionDataTask
 }
 
+// MARK: Network Call
 class Networking {
   
+  // MARK: URLSession
   lazy var session: SessionProtocol = URLSession.shared
   
+  // MARK: Singleton
   static let sharedInstance = Networking()
-  
+
+  // MARK: - Injections
   var delegate: ReloadCollectionViewDelegate?
   var jsonString: String?
   var restaurants = [Restaurant]()
@@ -43,6 +49,7 @@ class Networking {
         return
       }
       
+      // MARK: Decode Data
       do {
         let decoder = JSONDecoder()
         let restaurantData = try decoder.decode(RestaurantSearchResultsRawInfo.self, from: data)
@@ -69,6 +76,7 @@ class Networking {
   }
 }
 
+// MARK: SessionProcotol
 extension URLSession: SessionProtocol {
 }
 

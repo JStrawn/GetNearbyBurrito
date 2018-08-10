@@ -16,7 +16,7 @@ public struct RestaurantRawInfo: Codable {
   var name: String
   var geometry: GeometryRawInfo
   var vicinity: String
-  var price_level: Int
+  var price_level: Int?
 }
 
 public struct GeometryRawInfo: Codable {
